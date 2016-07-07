@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+
 #import "UMSocial.h"
 
 @interface ViewController ()
@@ -30,14 +31,13 @@
 -(void)shareBtn{
     
     /**
-     *  分享
+     *  要分享的文字和图片
      *
-     *  @return <#return value description#>
+     *  @return nil
      */
-    /**
-     要分享的文字和图片
-     */
+ 
     UIImageView *shareImageView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"test"]];
+    
     NSString *text=@"要分享的文字！！~~";
     
     
@@ -45,8 +45,8 @@
                                          appKey:@"569c98cc67e58e4b5b000456"
                                       shareText:text
                                      shareImage:shareImageView
-                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQQ,UMShareToSina, UMShareToRenren,UMShareToEmail,UMShareToDouban,UMShareToFacebook,UMShareToTwitter, nil]//多个UMShareToWechatSession：微信
-                                       delegate:nil];
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQQ,UMShareToSina, UMShareToRenren,UMShareToEmail,UMShareToDouban,UMShareToFacebook,UMShareToTwitter, nil]
+                                       delegate:nil];//多个 比如：UMShareToWechatSession == 微信 、UMShareToQQ == QQ，...
 
     
     NSString *shareUrlStr=[NSString stringWithFormat:@"http://www.baidu.com"];//点击链接

@@ -21,7 +21,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     /*
-     手动添加SDK 系统需要的framework
+     * 1. 手动添加SDK 系统需要的framework
      
      添加SDK后需要手动添加系统库SystemConfiguration.framework
      
@@ -37,34 +37,44 @@
      libsqlite3.dylib
      CoreTelephony.framework
      libstdc++.dylib
-     libz.dylib
-*/
+     libz.dylib*/
+    
+    
     /*
-     *  适配iOS9.0 需要加入白名单 
+     * 2. 适配iOS9.0 需要加入白名单
+    
+    * 如果你的应用使用了如SSO授权登录或跳转分享功能，在iOS9下就需要增加一个可跳转的白名单，指定对应跳转App的URL Scheme 如果不理解 没关系 只要按照下面做就行了
      
-    * 如果你的应用使用了如SSO授权登录或跳转分享功能，在iOS9下就需要增加一个可跳转的白名单，指定对应跳转App的URL Scheme，否则将在第三方平台判断是否跳转时用到的canOpenURL时返回NO，进而只进行webview授权或授权/分享失败。
-     同样在info.plist增加：
+     在info.plist增加：
      
      <key>LSApplicationQueriesSchemes</key>
      <array>
      <!-- 微信 URL Scheme 白名单-->
      <string>wechat</string>
      <string>weixin</string>
+     .
+     .
+     .
      
-     集体在友盟上链接：http://dev.umeng.com/social/ios/ios9 （我只加了几个你可以在plist文件中看到）
+     要想集成QQ、新浪， 去友盟官网上看 链接：http://dev.umeng.com/social/ios/ios9 （我只加了几个你可以在plist文件中看到）
      
      
      要配置  配置URL scheme 链接：http://dev.umeng.com/social/ios/quick-integration?spm=0.0.0.0.Pj9VMG#1_4_3
-     图：Snip20160616_1.png
+     
+     左侧工程文件中有图：Snip20160616_1.png
+     
      */
     
     
     
     // 集成好了啦 开始 先注册友盟和微信、QQ
-    [UMSocialData setAppKey:@"569c98cc67e58e4b5b000456"];//1.注册友盟，需要友盟账号->获取appkey 一般老大不给 就用自己的
+    
+    [UMSocialData setAppKey:@"569c98cc67e58e4b5b000456"];//1.注册友盟，需要友盟账号->获取appkey 一般用公司注册的。老大不给 就自己去注册个分分钟，记得创建工程按上面流程走 （代码里appkey只用作测试）
     
     
-    [UMSocialWechatHandler setWXAppId:@"wxe798deeb2c5cfd4b" appSecret:@"0acf102c08aa49db1c52bec556631710" url:@"http://www.baxianyipin.com"];//2。微信分享注册，需要去官网上注册 （一般老大给的）这是我公司的账号 (其中包含 朋友圈和好友)
+    [UMSocialWechatHandler setWXAppId:@"wxe798deeb2c5cfd4b" appSecret:@"0acf102c08aa49db1c52bec556631710" url:@"http://www.baxianyipin.com"];//2。微信分享注册，需要去官网上注册 （一般老大给的）这是我公司的账号（只做测试 不要乱用 ） (其中包含 朋友圈和好友)
+    
+    
      [UMSocialQQHandler setQQWithAppId:@"100424468" appKey:@"c7394704798a158208a74ab60104f0ba" url:@"http://vip.k-touch.cn"];//3.qq注册 同上
 
     
