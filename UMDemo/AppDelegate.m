@@ -69,16 +69,18 @@
     
     // 集成好了啦 开始 先注册友盟和微信、QQ
     
-    [UMSocialData setAppKey:@"569c98cc67e58e4b5b000456"];//1.注册友盟，需要友盟账号->获取appkey 一般用公司注册的。老大不给 就自己去注册个分分钟，记得创建工程按上面流程走 （代码里appkey只用作测试）
+    [UMSocialData setAppKey:@"507fcab25270157b37000010"];//1.注册友盟，需要友盟账号->获取appkey 一般用公司注册的。老大不给 就自己去注册个分分钟，记得创建工程按上面流程走 （代码里appkey只用作测试）
     
     
-    [UMSocialWechatHandler setWXAppId:@"wxe798deeb2c5cfd4b" appSecret:@"0acf102c08aa49db1c52bec556631710" url:@"http://www.baxianyipin.com"];//2。微信分享注册，需要去官网上注册 （一般老大给的）这是我公司的账号（只做测试 不要乱用 ） (其中包含 朋友圈和好友)
+    [UMSocialWechatHandler setWXAppId:@"wxd930ea5d5a258f4f" appSecret:@"db426a9829e4b49a0dcac7b4162da6b6" url:@"http://www.umeng.com/social"];//2。微信分享注册，需要去官网上注册 （一般老大给的） ） 
     
     
-     [UMSocialQQHandler setQQWithAppId:@"100424468" appKey:@"c7394704798a158208a74ab60104f0ba" url:@"http://vip.k-touch.cn"];//3.qq注册 同上
+     [UMSocialQQHandler setQQWithAppId:@"100424468" appKey:@"c7394704798a158208a74ab60104f0ba" url:@"http://www.umeng.com/social"];//3.  //设置手机QQ 的AppId，Appkey，和分享URL，需要#import "UMSocialQQHandler.h"
 
-    
-    
+    //打开新浪微博的SSO开关，设置新浪微博回调地址，这里必须要和你在新浪微博后台设置的回调地址一致。需要 #import "UMSocialSinaSSOHandler.h"
+   [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:@"3921700954"
+                                           secret:@"04b48b094faeb16683c32669824ebdad"
+                                         RedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
     
     
     return YES;
