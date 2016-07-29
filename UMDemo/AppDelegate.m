@@ -11,6 +11,7 @@
 #import "UMSocial.h"
 #import "UMSocialWechatHandler.h"
 #import "UMSocialQQHandler.h"
+#import "UMSocialSinaSSOHandler.h"
 @interface AppDelegate ()
 
 @end
